@@ -6,6 +6,7 @@ const db = knex(knexConfig.development);
 module.exports = {
     find,
     findById,
+    findSteps,
 }
 
 
@@ -15,4 +16,8 @@ function find() {
 
 function findById(id) {
     return db('schemes').where({ id: Number(id) })
+}
+
+function findSteps(id) {
+    return db('steps').where({ id: Number(id) })
 }
