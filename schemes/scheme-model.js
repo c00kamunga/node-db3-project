@@ -7,6 +7,7 @@ module.exports = {
     find,
     findById,
     findSteps,
+    add,
 }
 
 
@@ -20,4 +21,15 @@ function findById(id) {
 
 function findSteps(id) {
     return db('steps').where({ id: Number(id) })
+    .join("schemes as s", "s.id")
+    .where("s.id", scheme_id)
+    .select(
+        "s.scheme_name as scheme_name"
+    )
+}
+
+function add(scheme) {
+return db('schemes')
+.insert(scheme, 'id')
+.then(ids => ({ id: ids[0] }))
 }
