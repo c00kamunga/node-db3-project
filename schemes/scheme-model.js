@@ -36,8 +36,9 @@ return db('schemes')
 .then(ids => ({ id: ids[0] }))
 }
 
-function update(id, scheme) {
+function update(changes, id) {
 return db('schemes')
-.where('id', Number(id))
-.update(scheme)
+    .where('id', Number(id))
+    .update(changes)
 }
+
